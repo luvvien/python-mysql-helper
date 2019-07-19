@@ -104,6 +104,27 @@ db.close()
 - params是参数，可以是tuple或者list
 - step_size是一次执行数量，默认2000
 
+sample:
+
+```
+    db_conf = {
+        'user': 'vien',
+        'passwd': 'test',
+        'host': '127.0.0.1',
+        'schema': 'test',
+        'charset': 'utf8mb4'
+    }
+    with DBHelper(**db_conf) as db:
+        print(db.show_variable("max_allowed_packet"))
+        sql = 'insert into a_table(name, email) values (%s,%s)'
+        params = [
+            ['jj', 'jj@gmail.com'],
+            ['bb', 'bb@gmail.com'],
+            ['cc', 'cc@gmail.com'],
+        ]
+        db.execute_batch(sql, params, step_size=2000)
+```
+
 **insert_batch(self, sql, params, step_size=2000)**
 
 - 批量插入
