@@ -132,7 +132,7 @@ class DBHelper(object):
                     return res
         except Exception as e:
             raise e
-        return False
+        return []
 
     def get_values(self, sql, params=None, convert=True):
         if not self._tuple_cursor:
@@ -151,7 +151,7 @@ class DBHelper(object):
                     return res
         except Exception as e:
             raise e
-        return False
+        return []
 
     def execute(self, sql, params=None):
         if not self._tuple_cursor:
